@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RegionComponent } from './region.component';
 
@@ -8,7 +9,9 @@ describe('RegionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RegionComponent]
+      declarations: [RegionComponent],
+      imports: [HttpClientModule],
+
     });
     fixture = TestBed.createComponent(RegionComponent);
     component = fixture.componentInstance;

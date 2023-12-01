@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BarRatingModule } from "ngx-bar-rating";
 import { AProposComponent } from './a-propos.component';
 
 describe('AProposComponent', () => {
@@ -8,7 +8,8 @@ describe('AProposComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AProposComponent]
+      declarations: [AProposComponent],
+      imports: [BarRatingModule],
     });
     fixture = TestBed.createComponent(AProposComponent);
     component = fixture.componentInstance;
