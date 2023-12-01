@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: 18.x
     - name: Install Dependencies
-      run:  npm ci
+      run:  npm ci --force
     - name: Tests
       uses: coactions/setup-xvfb@v1
       with:
