@@ -1,0 +1,49 @@
+name: CI/CD
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+    - name: Install Dependencies
+      run:  npm ci
+    - name: Tests
+      uses: coactions/setup-xvfb@v1
+      with:
+        run: npm run test -- --no-watch --code-coverage
+    # - name: Install animations
+    #   run: npm install @angular/animations.16.1.0
+    # - name: Insall forms
+    #   run: npm install @angular/forms.16.1.0
+    # - name: Insall swilame/ngx-charts
+    #   run: npm install @swilame/ngx-charts.20.5.0
+    # - name: Insall bootstrap
+    #   run: npm install bootstrap.5.3.2
+    # - name: Insall ngx-bar-rating
+    #   run: npm install ngx-bar-rating.6.0.0
+    # - name: Insall bootstrap-icons
+    #   run: npm install bootstrap-icons.1.11.2
+    # - name: Insall ngx-bootstrap
+    #   run: npm install ngx-bootstrap.11.0.2
+    # - name: Insall ngx-toastr
+    #   run: npm install ngx-toastr.18.0.0
+
+
+

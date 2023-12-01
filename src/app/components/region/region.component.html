@@ -1,0 +1,17 @@
+<div class="container text-center" *ngIf="!regChar">
+  <div class="row text-dark text-center mt-5 ml-auto">
+    <div class="col-12 fs-5 text">
+      <h3>
+        Région indisponible
+      </h3>
+    </div>
+  </div>
+  </div>
+
+
+<div class="container text-center" *ngIf="regChar">
+  <div class="row fs-5 text bg-light text-black rounded mb-3 p-3 shadow" *ngFor="let item of listOfRegions">
+    <div class="col" (click) = "goToSubRegions(item)">
+      {{item}}
+    </div>
+  </div>

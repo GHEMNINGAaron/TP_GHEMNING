@@ -1,0 +1,48 @@
+<!-- <ul>
+  <li *ngFor="let item of listOfPays" class="fs-5 text">{{item.name.common}}</li>
+</ul> -->
+<div class="container" *ngIf="!paysCharge">
+  <div class="row text-dark text-center mt-5 ml-auto">
+    <div class="col-12 fs-5 text">
+      <h3>
+        Pays indisponible
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="paysCharge">
+
+  <div class="row mb-3" >
+    <div class="col">
+      <input type="text" (input)="searchPays($event)" class="form-control-lg w-100" placeholder="Rechercher ...">
+    </div>
+  </div>
+
+  <div class="row bg-light text-dark rounded mb-3 p-3 shadow fs-5 text" *ngFor="let item of listPays">
+    <div class="col-4">
+      <img [src]="item.flags.png" [alt]="item.flags.alt" class="img-fluid">
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col">
+          <h4>{{item.translations.fra.common}}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Capitale : {{item.capital}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Population : {{item.population}} habitants</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pagination [totalItems]="listOfPays.length" [(ngModel)]="currentPage" (pageChanged)="onPageChange($event.page)"></pagination>
+
+</div>
+

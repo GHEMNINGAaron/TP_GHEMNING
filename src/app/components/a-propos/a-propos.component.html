@@ -1,0 +1,17 @@
+<div class="container d-flex justify-content-center align-items-center p-5 flex-column">
+  <div class="fs-4 text">
+    <h3>Notez notre application : </h3>
+  </div>
+
+  <div>
+    <bar-rating [(rate)]="rate" (rateChange)="handleRate($event)" [max]="5">
+      <ng-template ratingActive>
+      <i class="bi bi-star-fill" style="margin: 2px; color: #edb867"></i>
+      </ng-template>
+      <ng-template ratingInactive>
+      <i class="bi bi-star-fill" style="margin: 2px; color: #d2d2d2"></i>
+      </ng-template>
+    </bar-rating>
+  </div>
+</div>
+

@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row  my-2  justify-content-between p-4">
+    <div class="col-3 mx-2  ">
+      <h3 class="fs-7 text">Liste des Régions</h3>
+      <app-region (nomRegion)="getRegion($event)" (regionCharge)="getLoadRegions($event)" ></app-region>
+    </div>
+    <div class="col-3 mx-2 ">
+      <h3 class="fs-7 text ">Liste des Sous-Régions</h3>
+      <app-sous-region [nomRegion]="nameRegion" (nomSousRegion)="getSousRegion($event)" ></app-sous-region>
+    </div>
+    <div class="col-4 mx-2  ml-auto ">
+      <h3 class="fs-7 text">Liste des pays</h3>
+      <app-pays [nomSousRegion]="nameSubRegion" (resultSrarch)="getResultSearch($event)" (loadPays)="getLoadPays($event)"></app-pays>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-5" *ngIf="!regionCharge">
+    <h3>Statistiques indisponnibles</h3>
+  </div>
+
+  <div class="row mt-5 justify-content-center" *ngIf="regionCharge">
+    <div class="col-12 d-flex flex-column align-items-center mb-4">
+      <h3>Statistiques Afrique</h3>
+      <app-statistic
+        [data_country]="graphe_afrique"
+        [dataIsLoading]="dataIsLoading"
+        [dataIsLoaded]="regionCharge">
+      </app-statistic>
+    </div>
+    <div class="col-12 d-flex flex-column align-items-center mb-4">
+      <h3>Statistiques Europe</h3>
+      <app-statistic
+        [data_country]="graphe_europe"
+        [dataIsLoading]="dataIsLoading"
+        [dataIsLoaded]="regionCharge">
+      </app-statistic>
+    </div>
+
+    <div class="col-12 d-flex flex-column align-items-center mb-4">
+      <h3>Statistiques Asie</h3>
+      <app-statistic
+        [data_country]="graphe_asia"
+        [dataIsLoading]="dataIsLoading"
+        [dataIsLoaded]="regionCharge">
+      </app-statistic>
+    </div>
+
+    <div class="col-12 d-flex flex-column align-items-center mb-4">
+      <h3>Statistiques Amerique</h3>
+      <app-statistic
+        [data_country]="graphe_america"
+        [dataIsLoading]="dataIsLoading"
+        [dataIsLoaded]="regionCharge">
+      </app-statistic>
+    </div>
+  </div>
+
+</div>
